@@ -106,9 +106,12 @@ function tgm_options_page()
         <td>
           <fieldset>
             <p>
-              <?php $tag_status_options = get_option( 'tgm_tag_status' ); ?>
-              <label><input type="radio" name="tgm_tag_status[option_three]" value="enabled"<?php checked( 'enabled' == $tag_status_options['option_three'] ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
-              <label><input type="radio" name="tgm_tag_status[option_three]" value="disabled"<?php checked( 'disabled' == $tag_status_options['option_three'] ); ?> /> <?php _e( 'Disabled' ) ?></label>
+              <?php 
+                $tag_status_options = get_option( 'tgm_tag_status' );
+                $tag_status_options = ( empty( $tag_status_options ) ) ? 'enabled' : $tag_status_options;
+              ?>
+              <label><input type="radio" name="tgm_tag_status[option_three]" value="enabled"<?php checked( $tag_status_options['option_three'], 'enabled' ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
+              <label><input type="radio" name="tgm_tag_status[option_three]" value="disabled"<?php checked( $tag_status_options['option_three'], 'disabled' ); ?> /> <?php _e( 'Disabled' ) ?></label>
             </p>
             <p class="description" id="tagline-description"><?php _e( 'Chose if you want to enable or disable your code snippet.') ?></p>
         </fieldset>
