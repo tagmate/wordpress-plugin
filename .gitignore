@@ -1,1 +1,3 @@
 wordpress/
+tagmate-plugin/vendor
+tagmate-plugin/composer.lock
