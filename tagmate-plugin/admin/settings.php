@@ -19,10 +19,10 @@ function tgm_add_settings() {
    add_option( 'tgm_option_user_id' );
    register_setting( 'tgm_options_group', 'tgm_option_user_id', 'tgm_is_valid_user_id' );
 
-   add_option( 'tgm_option_tag_location' );
+   add_option( 'tgm_option_tag_location');
    register_setting( 'tgm_options_group', 'tgm_option_tag_location', 'tgm_is_valid_tag_location' );
 
-   add_option( 'tgm_tag_status' );
+   add_option( 'tgm_tag_status');
    register_setting( 'tgm_options_group', 'tgm_tag_status', 'tgm_is_valid_tag_status' );
 }
 add_action('admin_init', 'tgm_add_settings');
@@ -82,7 +82,7 @@ function tgm_options_page()
       <tr>
         <th scope="row"><label for="tgm_option_user_id"><?php _e( 'User ID' ) ?></label></th>
         <td>
-          <input type="text" id="tgm_option_user_id" name="tgm_option_user_id" value="<?php echo sanitize_key( get_option('tgm_option_user_id') ) ?>" class="regular-text" placeholder="<?php _e( 'Paste your User ID' ) ?>" pattern="<?php echo substr( TGM_USER_ID_REGEX, 1, -1 ) ?>" title="<?php _e( 'numbers, alphabet, hyphen-minus, underscore' ) ?>">
+          <input type="text" id="tgm_option_user_id" name="tgm_option_user_id" value="<?php echo sanitize_key( get_option('tgm_option_user_id') ) ?>" class="regular-text" placeholder="<?php _e( 'Paste your User ID' ) ?>" pattern="<?php echo substr( TGM_USER_ID_REGEX, 1, -1 ) ?>" min="1" title="<?php _e( 'numbers, alphabet, hyphen-minus, underscore' ) ?>">
           <p class="description" id="tagline-description"><?php _e( 'Please copy-paste your "User ID" and <strong>if you were provided one</strong>, otherwise leave it blank.<br> Correct format examples: ') ?> <kbd>kfd2_jm6s-8f31f</kbd>, <kbd>3le3t</kbd>, <kbd>42</kbd>.</p>
         </td>
       </tr>

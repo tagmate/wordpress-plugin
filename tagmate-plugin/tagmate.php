@@ -33,22 +33,22 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 // Plugin
-define( 'TGM_VERSION',         '1.1.0' );
-define( 'TGM_PLUGIN_PATH',     plugin_dir_path( __FILE__ ) );
-define( 'TGM_PLUGIN_URL',      plugin_dir_url( __FILE__ ) );
+define( 'TGM_VERSION',              '1.1.0' );
+define( 'TGM_PLUGIN_PATH',          plugin_dir_path( __FILE__ ) );
+define( 'TGM_PLUGIN_URL',           plugin_dir_url( __FILE__ ) );
 
 // Default domains and other attributes
-define( 'TGM_TLD',             'tagmate.io' );
-define( 'TGM_CDN_DOMAIN',      'cdn.tagmate.io' );
-define( 'TGM_TAG_CSS_ID',      'tgm-js-tag' );
-define( 'TGM_TAG_ATTRIBUTE',   'tgm-data' );
-define( 'TGM_JS_FILE',         'tgm.js' );
+define( 'TGM_TLD',                  'tagmate.io' );
+define( 'TGM_CDN_DOMAIN',           'cdn.tagmate.io' );
+define( 'TGM_TAG_CSS_ID',           'tgm-js-tag' );
+define( 'TGM_TAG_ATTRIBUTE',        'tgm-data' );
+define( 'TGM_JS_FILE',              'tgm.js' );
 
 // Validation patterns
 define( 'TGM_PLATFOM_ID_REGEX',     '/^tgm-[0-9a-z]{5}$/' ); // e.g. tgm-4d3m0
 define( 'TGM_USER_ID_REGEX',        '/^(?!.*(-|_){2})[0-9A-Za-z-_]{1,33}$/' ); // 1-33 key because each SaaS platform uses different specs
 define( 'TGM_TAG_LOCATION_REGEX',   '/^(head|footer)$/' );
-define( 'TGM_TAG_STATUS_REGEX',   '/^(enabled|disabled)$/' );
+define( 'TGM_TAG_STATUS_REGEX',     '/^(enabled|disabled)$/' );
 
 
 /**

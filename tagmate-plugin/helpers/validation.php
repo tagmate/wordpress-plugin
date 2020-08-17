@@ -33,6 +33,13 @@ function tgm_is_valid_platform_id( string $platform_id ) {
       }
     }
   }
+  else{
+    $type = 'error';
+    $message = __( 'Your "Platform ID" is required!' );
+    add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
+    
+    $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
+  }
 
   return $platform_id;
 }
@@ -108,7 +115,7 @@ function tgm_is_valid_tag_status( array $tag_status ) {
   $tag_status_value = array_values( $tag_status )[0];
 
   if ( !tgm_matches_pattern( TGM_TAG_STATUS_REGEX, $tag_status_value ) ) {
-    $tag_status[ array_key_first( $tag_status ) ] = 'enabled'; // Default
+    $tag_status = array( 'option_three' => 'disabled' ); // Default - which should only happen if the databse was directly edited
   }
 
   return $tag_status;

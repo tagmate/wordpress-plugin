@@ -22,7 +22,7 @@ services:
     container_name: 'tgm-local-wordpress'
     depends_on:
       - db
-    image: 'wordpress:5.5.0-php7.3-apache'
+    image: 'wordpress:latest'
     ports:
       - '80:80'
     environment:
