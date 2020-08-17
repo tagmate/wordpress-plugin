@@ -89,11 +89,11 @@ function tgm_options_page()
         <th scope="row"><label for="tag_location"><?php _e( 'Loading Priority (location)' ) ?></label></th>
         <td>
           <?php
-          $tag_location_options = array_map( 'esc_attr', get_option( 'tgm_option_tag_location' ) );
+          $tag_location_options =  get_option( 'tgm_option_tag_location' );
           ?>
           <select name='tgm_option_tag_location[tmg_select_location]'>
-            <option value='head' <?php selected( $tag_location_options['tmg_select_location'], 'head' ); ?>><?php _e( 'High (head)' ) ?></option>
-            <option value='footer' <?php selected( $tag_location_options['tmg_select_location'], 'footer' ); ?>><?php _e( 'Low (footer)' ) ?></option>
+            <option value='head' <?php selected( esc_attr( $tag_location_options['tmg_select_location'] ), 'head' ); ?>><?php _e( 'High (head)' ) ?></option>
+            <option value='footer' <?php selected( esc_attr( $tag_location_options['tmg_select_location'] ), 'footer' ); ?>><?php _e( 'Low (footer)' ) ?></option>
           </select>
 
           <p class="description" id="tagline-description"><?php _e( 'Chose where you want to place the code snippet. Important services like Analytics tools should be placed on the `head`<br> and services like chat widgets are placed on the `footer`.') ?></p>
@@ -107,7 +107,7 @@ function tgm_options_page()
             <p>
               <?php 
                 $tag_status_options = get_option( 'tgm_tag_status' );
-                $tag_status_options = ( empty( $tag_status_options ) ) ? 'enabled' : $tag_status_options;
+                $tag_status_options = ( empty( $tag_status_options ) ) ? array( 'option_three' => 'enabled' ) : $tag_status_options;
               ?>
               <label><input type="radio" name="tgm_tag_status[option_three]" value="enabled"<?php checked( $tag_status_options['option_three'], 'enabled' ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
               <label><input type="radio" name="tgm_tag_status[option_three]" value="disabled"<?php checked( $tag_status_options['option_three'], 'disabled' ); ?> /> <?php _e( 'Disabled' ) ?></label>

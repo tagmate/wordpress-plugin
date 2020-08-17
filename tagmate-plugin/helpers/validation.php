@@ -59,8 +59,9 @@ function tgm_is_valid_user_id( string $user_id ) {
 
 
 /**
- * Validate URL HTTP status.
+ * Validate URL HTTP status
  */
+
 function tgm_is_valid_url( string $url ) {
 
   $is_valid = false;
