@@ -5,7 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-define( 'TGM_TLD', 'tagmate.io' );
 
 /**
  * Admin Settings
