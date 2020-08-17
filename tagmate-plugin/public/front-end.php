@@ -7,7 +7,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /**
- * Print JS asset tag after validatio and sanitization
+ * Print JS asset tag after validation and sanitization
  */
 
 function tgm_print_tag(){
@@ -37,7 +37,7 @@ function tgm_print_tag(){
 
 /**
  * Handle enabled|disabled status and tag head|footer printing location
- * Refactorign ntoe: thing of cleaner way to handle this!
+ * Refactoring note: thing of a cleaner way to handle this!
  */
 
 $tgm_tag_status = array_map( 'esc_attr', get_option( 'tgm_tag_status' ) );

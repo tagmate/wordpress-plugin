@@ -85,7 +85,7 @@ function tgm_is_valid_url( string $url ) {
 
 function tgm_is_valid_tag_location( array $tag_location ) {
 
-  // In case somone adds an empty/foreign option via the DOM, so no error messages displayed
+  // In case someone adds an empty/foreign option via the DOM, so no error messages displayed
   if ( empty( $tag_location ) ) {
     $tag_location = array_map( 'esc_attr', get_option( 'tgm_option_tag_location' ) );
   }
