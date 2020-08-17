@@ -40,7 +40,7 @@ function tgm_print_tag(){
  * Refactoring note: thing of a cleaner way to handle this!
  */
 
-$tgm_tag_status = array_map( 'esc_attr', get_option( 'tgm_tag_status' ) );
+$tgm_tag_status =  get_option( 'tgm_tag_status' );
 if ( !empty( $tgm_tag_status ) && $tgm_tag_status[ array_key_first( $tgm_tag_status ) ] !== 'disabled' ) {
 
 	$tgm_option_tag_location = array_map( 'esc_attr', get_option( 'tgm_option_tag_location' ) );
