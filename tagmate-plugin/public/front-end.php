@@ -5,10 +5,6 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
-define( 'TGM_CDN_DOMAIN',      'cdn.tagmate.io' );
-define( 'TGM_TAG_CSS_ID',      'tgm-js-tag' );
-define( 'TGM_TAG_ATTRIBUTE',   'tgm-data' );
-define( 'TGM_JS_FILE',         'tgm.js' );
 
 /**
  * Print JS asset tag after validatio and sanitization

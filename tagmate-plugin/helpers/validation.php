@@ -6,12 +6,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define( 'TGM_PLATFOM_ID_REGEX',     '/^tgm-[0-9a-z]{5}$/' ); // e.g. tgm-4d3m0
-define( 'TGM_USER_ID_REGEX',        '/^(?!.*(-|_){2})[0-9A-Za-z-_]{1,33}$/' ); // 1-33 key because each SaaS platform uses different specs
-define( 'TGM_TAG_LOCATION_REGEX',   '/^(head|footer)$/' );
-define( 'TGM_TAG_STATUS_REGEX',   '/^(enabled|disabled)$/' );
-
-
 /**
  * Validate Platform ID
  */
@@ -27,6 +21,16 @@ function tgm_is_valid_platform_id( string $platform_id ) {
       add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
       
       $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
+    }
+    else{
+      $js_file_url  = "https://" . TGM_CDN_DOMAIN . "/" . $platform_id . "/" . TGM_JS_FILE;
+      if( !tgm_is_valid_url( $js_file_url ) ) {
+        $type = 'error';
+        $message = __( 'The "Platform ID" does not exist. Please make sure your entered the right information.' );
+        add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
+        
+        $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
+      }
     }
   }
 
@@ -51,6 +55,27 @@ function tgm_is_valid_user_id( string $user_id ) {
   }
 
   return $user_id;
+}
+
+
+/**
+ * Validate URL HTTP status
+ */
+
+function tgm_is_valid_url( string $url ) {
+
+  $is_valid = false;
+  $retry = 2;
+
+  for ( $i = 0; $i <= $retry; $i++) { 
+
+    $http_headers = wp_remote_head( $url );
+    if ($http_headers["response"]["code"] === 200) {
+     $is_valid = true; 
+     break;
+    }
+  }
+  return $is_valid;
 }
 
 
