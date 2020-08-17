@@ -31,6 +31,7 @@ if ( ! defined( 'ABSPATH' ) ) {
   exit;
 }
 
+
 // Plugin
 define( 'TGM_VERSION',         '1.1.0' );
 define( 'TGM_PLUGIN_PATH',     plugin_dir_path( __FILE__ ) );
@@ -53,6 +54,7 @@ define( 'TGM_TAG_STATUS_REGEX',   '/^(enabled|disabled)$/' );
 /**
  * Initialize the plugin
  */
+
 function tgm_init() {
   require_once TGM_PLUGIN_PATH . '/helpers/validation.php';
 
