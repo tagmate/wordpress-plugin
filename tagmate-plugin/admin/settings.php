@@ -22,8 +22,8 @@ function tgm_add_settings() {
    add_option( 'tgm_option_tag_location');
    register_setting( 'tgm_options_group', 'tgm_option_tag_location', 'tgm_is_valid_tag_location' );
 
-   add_option( 'tgm_tag_status');
-   register_setting( 'tgm_options_group', 'tgm_tag_status', 'tgm_is_valid_tag_status' );
+   add_option( 'tgm_option_tag_status');
+   register_setting( 'tgm_options_group', 'tgm_option_tag_status', 'tgm_is_valid_tag_status' );
 }
 add_action('admin_init', 'tgm_add_settings');
 
@@ -107,11 +107,11 @@ function tgm_options_page()
           <fieldset>
             <p>
               <?php 
-                $tag_status_options = get_option( 'tgm_tag_status' );
+                $tag_status_options = get_option( 'tgm_option_tag_status' );
                 $tag_status_options = ( empty( $tag_status_options ) ) ? array( 'option_three' => 'enabled' ) : $tag_status_options;
               ?>
-              <label><input type="radio" name="tgm_tag_status[option_three]" value="enabled"<?php checked( $tag_status_options['option_three'], 'enabled' ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
-              <label><input type="radio" name="tgm_tag_status[option_three]" value="disabled"<?php checked( $tag_status_options['option_three'], 'disabled' ); ?> /> <?php _e( 'Disabled' ) ?></label>
+              <label><input type="radio" name="tgm_option_tag_status[option_three]" value="enabled"<?php checked( $tag_status_options['option_three'], 'enabled' ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
+              <label><input type="radio" name="tgm_option_tag_status[option_three]" value="disabled"<?php checked( $tag_status_options['option_three'], 'disabled' ); ?> /> <?php _e( 'Disabled' ) ?></label>
             </p>
             <p class="description" id="tagline-description"><?php _e( 'Chose if you want to enable or disable your code snippet.') ?></p>
         </fieldset>

@@ -111,11 +111,16 @@ function tgm_is_valid_tag_location( array $tag_location ) {
  */
 
 function tgm_is_valid_tag_status( array $tag_status ) {
-
   $tag_status_value = array_values( $tag_status )[0];
 
-  if ( !tgm_matches_pattern( TGM_TAG_STATUS_REGEX, $tag_status_value ) ) {
-    $tag_status = array( 'option_three' => 'disabled' ); // Default - which should only happen if the databse was directly edited
+  if ( empty( $tag_location ) ) {
+    $tag_status = array_map( 'esc_attr', get_option( 'tgm_option_tag_status' ) );
+  }
+  else{
+
+    if ( !tgm_matches_pattern( TGM_TAG_STATUS_REGEX, $tag_status_value ) ) {
+      $tag_status = array_map( 'esc_attr', get_option( 'tgm_option_tag_status' ) );
+    }
   }
 
   return $tag_status;

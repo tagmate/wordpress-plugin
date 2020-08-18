@@ -43,16 +43,16 @@ function tgm_print_tag(){
 
 if ( get_option( 'tgm_option_platform_id' ) ) {
 
-	$tgm_tag_status =  get_option( 'tgm_tag_status' );
-	if (  !empty( $tgm_tag_status ) && !in_array( 'disabled', $tgm_tag_status ) ) {
+	$tgm_option_tag_status =  get_option( 'tgm_option_tag_status' );
+	if (  !empty( $tgm_option_tag_status ) && !in_array( 'disabled', $tgm_option_tag_status ) ) {
 
 		$tgm_option_tag_location = get_option( 'tgm_option_tag_location' );	
 
 		if ( !in_array(  'footer', $tgm_option_tag_location) ) { 
-			add_action('wp_footer', 'tgm_print_tag');
+			add_action( 'wp_footer', 'tgm_print_tag' );
 		}
 		else{
-			add_action('wp_head', 'tgm_print_tag');
+			add_action( 'wp_head', 'tgm_print_tag' );
 		}
 	}
 }
