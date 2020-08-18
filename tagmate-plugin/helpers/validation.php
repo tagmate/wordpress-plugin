@@ -93,6 +93,7 @@ function tgm_is_valid_url( string $url ) {
     }
     else{
       $is_valid = 'error'; 
+      break;
     }
 
   }
