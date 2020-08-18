@@ -61,7 +61,7 @@ function tgm_options_page()
 </style>
 
 <div class="wrap">
-  <img src="<?php echo TGM_PLUGIN_URL ?>/assets/img/tagmate-logo.png" id="brand-logo" alt="tagmate logo" />
+  <img src="<?php echo TGM_PLUGIN_URL ?>/assets/img/tagmate-logo.png" id="brand-logo" alt="tagmate.io logo" />
   <hr>
   <h1 class="title"><?php _e( 'Code Snippet Settings' ) ?></h1>
 

@@ -3,7 +3,7 @@
    Plugin Name: tagmate.io — code snippet installer
    Plugin URI: https://tagmate.io
    description: tagmate.io helps you easily install third-party services code snippets on your website.
-   Version: 1.1.0
+   Version: 1.0.0
    Requires at least: 3.9
    Tested up to: 5.5
    Author: Hicham Abdelkaoui (tagmate.io)
@@ -33,7 +33,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 // Plugin
-define( 'TGM_VERSION',              '1.1.0' );
+define( 'TGM_VERSION',              '1.0.0' );
 define( 'TGM_PLUGIN_PATH',          plugin_dir_path( __FILE__ ) );
 define( 'TGM_PLUGIN_URL',           plugin_dir_url( __FILE__ ) );
 
