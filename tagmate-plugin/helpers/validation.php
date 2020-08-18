@@ -26,7 +26,7 @@ function tgm_is_valid_platform_id( string $platform_id ) {
       $js_file_url  = "https://" . TGM_CDN_DOMAIN . "/" . $platform_id . "/" . TGM_JS_FILE;
       if( !tgm_is_valid_url( $js_file_url ) ) {
         $type = 'error';
-        $message = __( 'The "Platform ID" does not exist. Please make sure your entered the right information.' );
+        $message = __( 'This "Platform ID" does not exist. Please make sure your entered the right information.' );
         add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
         
         $platform_id = sanitize_key( get_option('tgm_option_platform_id') );

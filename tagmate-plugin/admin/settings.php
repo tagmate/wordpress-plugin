@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Admin Settings
  *
- * Refctoring note: use add_settings_section() and add_settings_field() 
+ * Refctoring note: make use of add_settings_section() and add_settings_field() 
  */
 
 function tgm_add_settings() {
@@ -41,7 +41,7 @@ add_action('admin_menu', 'tgm_add_options_page');
 /**
  * Admin Page Content
  *
- * Refactoring note: use do_settings_sections()
+ * Refactoring note: make use of do_settings_sections()
  */
 
 function tgm_options_page()
@@ -67,7 +67,6 @@ function tgm_options_page()
 
   <form method="post" action="options.php">
     <?php settings_fields( 'tgm_options_group' ); ?>
-    <?php // do_settings_sections(); // add during admin refactoring ?>
 
     <table class="form-table" role="presentation">
     <tbody>
