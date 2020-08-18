@@ -24,9 +24,17 @@ function tgm_is_valid_platform_id( string $platform_id ) {
     }
     else{
       $js_file_url  = "https://" . TGM_CDN_DOMAIN . "/" . $platform_id . "/" . TGM_JS_FILE;
-      if( !tgm_is_valid_url( $js_file_url ) ) {
+      $is_valid_js_file_url = tgm_is_valid_url( $js_file_url );
+      if( !$is_valid_js_file_url ) {
         $type = 'error';
         $message = __( 'This "Platform ID" does not exist. Please make sure your entered the right information.' );
+        add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
+        
+        $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
+      }
+      else if ( $is_valid_js_file_url === 'error' ) { // http wp_error
+        $type = 'error';
+        $message = __( '"Platform ID" validation via http request failed. Please make sure that your server can perfom http requests to "' . TGM_CDN_DOMAIN . '"' );
         add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
         
         $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
@@ -77,10 +85,16 @@ function tgm_is_valid_url( string $url ) {
   for ( $i = 0; $i <= $retry; $i++) { 
 
     $http_headers = wp_remote_head( $url );
-    if ($http_headers["response"]["code"] === 200) {
-     $is_valid = true; 
-     break;
+    if ( empty( $http_headers->errors ) ) {
+      if ($http_headers["response"]["code"] === 200) {
+       $is_valid = true; 
+       break;
+      }
     }
+    else{
+      $is_valid = 'error'; 
+    }
+
   }
   return $is_valid;
 }
