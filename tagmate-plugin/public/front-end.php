@@ -38,7 +38,7 @@ function tgm_print_tag(){
 
 /**
  * Handle enabled|disabled status and tag head|footer printing location
- * Refactoring note: thing of a cleaner way to handle this!
+ * 
  */
 
 if ( get_option( 'tgm_option_platform_id' ) ) {

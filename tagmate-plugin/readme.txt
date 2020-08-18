@@ -33,7 +33,7 @@ Code snippets are only loaded for your theme/front-facing pages.
 
 = Does this plugin work on older versions of WordPress or PHP? =
 
-Possibly, but I've not tried. I can only provide support if you're using v3.9 WordPress and PHP 5.2.4 or newer.
+Posibly, but this plugin was tested with WordPress 3.9, 5.4 and 5.5. I can only provide support if you're using WordPress v3.9 or newer, and PHP 5.2.4 or newer.
 
 == Screenshots ==
 
@@ -59,12 +59,9 @@ Possibly, but I've not tried. I can only provide support if you're using v3.9 Wo
 == Changelog ==
 
 = 1.0.0 =
-*Release Date - 10 August 2020*
+*Release Date - 18 August 2020*
 
-* Super kludge and unsecure initial non-published release
-
-= 1.1.0 =
-*Release Date - 16 August 2020*
-
-* Add Platform ID and User ID JavaScript asset loading
-* Add Sanitization and Validation
+* Platform ID based JS tag asset loading
+* User ID parameter support
+* Disable|Enable the JS tag 
+* Sanitization and Validation
