@@ -15,9 +15,9 @@ function tgm_print_tag(){
 	$is_printed = false;
 
 	$platform_id = sanitize_key( get_option('tgm_option_platform_id') );
-	$user_id = esc_attr( get_option( 'tgm_option_user_id' ) );
 
 	if ( !empty( $platform_id ) ) {
+		$user_id = esc_attr( get_option( 'tgm_option_user_id' ) );
 		$js_url  = "//" . TGM_CDN_DOMAIN . "/" . $platform_id . "/" . TGM_JS_FILE;
 
 		$js_tag   = "<!-- Code Snippet Installer for WordPress by tagmate.io-->";
