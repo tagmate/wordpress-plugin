@@ -126,9 +126,10 @@ function tgm_is_valid_tag_location( array $tag_location ) {
  */
 
 function tgm_is_valid_tag_status( array $tag_status ) {
+  
   $tag_status_value = array_values( $tag_status )[0];
 
-  if ( empty( $tag_location ) ) {
+  if ( empty( $tag_status ) ) {
     $tag_status = array_map( 'esc_attr', get_option( 'tgm_option_tag_status' ) );
   }
   else{
