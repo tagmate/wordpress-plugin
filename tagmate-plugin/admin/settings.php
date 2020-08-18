@@ -33,7 +33,7 @@ add_action('admin_init', 'tgm_add_settings');
  */
 
 function tgm_add_options_page() {
-   add_options_page('Code Sippet Settings - tagmate.io', 'Tagmate', 'manage_options', 'tm', 'tgm_options_page');
+   add_options_page('Code Sippet Installer by tagmate.io', 'Tagmate', 'manage_options', 'tgm', 'tgm_options_page');
 }
 add_action('admin_menu', 'tgm_add_options_page');
 
