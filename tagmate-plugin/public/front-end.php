@@ -17,12 +17,12 @@ function tgm_print_tag(){
 	$platform_id = sanitize_key( get_option('tgm_option_platform_id') );
 
 	if ( !empty( $platform_id ) ) {
-		$user_id = esc_attr( get_option( 'tgm_option_user_id' ) );
 		$js_url  = "//" . TGM_CDN_DOMAIN . "/" . $platform_id . "/" . TGM_JS_FILE;
 
 		$js_tag   = "<!-- Code Snippet Installer for WordPress by tagmate.io-->";
 		$js_tag  .= "<script id='" . esc_attr( TGM_TAG_CSS_ID ) . "' " . esc_attr( TGM_TAG_ATTRIBUTE ) . "='";
 
+		$user_id = esc_attr( get_option( 'tgm_option_user_id' ) );
 		if ( !empty( $user_id ) ) { 
 			$js_tag  .= $user_id;
 		}
