@@ -80,23 +80,27 @@ function tgm_is_valid_user_id( string $user_id ) {
 function tgm_is_valid_url( string $url ) {
 
   $is_valid = false;
-  $retry = 2;
+  
+  if ( !empty( $url ) ) {
 
-  for ( $i = 0; $i <= $retry; $i++) { 
+    $retry = 2;
+    for ( $i = 0; $i <= $retry; $i++) { 
 
-    $http_headers = wp_remote_head( $url );
-    if ( empty( $http_headers->errors ) ) {
-      if ($http_headers["response"]["code"] === 200) {
-       $is_valid = true; 
-       break;
+      $http_headers = wp_remote_head( $url );
+      if ( empty( $http_headers->errors ) ) {
+        if ($http_headers["response"]["code"] === 200) {
+         $is_valid = true; 
+         break;
+        }
       }
-    }
-    else{
-      $is_valid = 'error'; 
-      break;
-    }
+      else{
+        $is_valid = 'error'; 
+        break;
+      }
 
+    }
   }
+
   return $is_valid;
 }
 
