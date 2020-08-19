@@ -22,6 +22,7 @@ svn checkout --depth immediates https://plugins.svn.wordpress.org/tagmate-io-cod
 ```
 2. Make sure the code is up to date by runing:
 ```
+cd svn
 svn update --set-depth infinity assets
 svn update --set-depth infinity trunk
 svn update --set-depth infinity tags
@@ -30,13 +31,12 @@ svn update --set-depth infinity branches
 3. Update the changelogs, versionm and validate the `readme.txt` file using [this tool](https://wordpress.org/plugins/developers/readme-validator/)
 4. Copy the updated version to the `trunk/` directory (`n.n.n` is the vertsion tag represented in numbers):
 ```
-cp -rf ./tagmate-plugin/* trunk/
-cp -rf ./tagmate-plugin/* tags/n.n.n/*
+cp -rf ../tagmate-plugin/* trunk/
+cp -rf ../tagmate-plugin/* tags/n.n.n/*
 ```
 5. Compress 'trunk' as a .zip and test it on the targeted WordPress versions to QA test the plugin before an update
 6. Add the changes
 ```
-cd svn
 svn add . --force
 ```
 7. Fix screenshots MIME types (to avoid downloading them when clicking):
