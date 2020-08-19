@@ -1,7 +1,7 @@
 === tagmate.io — code snippet installer ===
 Contributors: sychedelix
 Tags: code snippet, embed code, SaaS, analytics, widget
-Tested up to: 5.4.2
+Tested up to: 5.5
 Requires at least: 3.9
 Stable tag: 3.9
 License: GPLv2 or later
