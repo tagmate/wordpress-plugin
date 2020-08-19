@@ -24,14 +24,29 @@ function tgm_is_valid_platform_id( string $platform_id ) {
     }
     else{
       $js_file_url  = "https://" . TGM_CDN_DOMAIN . "/" . $platform_id . "/" . TGM_JS_FILE;
-      if( !tgm_is_valid_url( $js_file_url ) ) {
+      $is_valid_js_file_url = tgm_is_valid_url( $js_file_url );
+      if( !$is_valid_js_file_url ) {
         $type = 'error';
-        $message = __( 'The "Platform ID" does not exist. Please make sure your entered the right information.' );
+        $message = __( 'This "Platform ID" does not exist. Please make sure your entered the right information.' );
+        add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
+        
+        $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
+      }
+      else if ( $is_valid_js_file_url === 'error' ) { // http wp_error
+        $type = 'error';
+        $message = __( '"Platform ID" validation via http request failed. Please make sure that your server can perfom http requests to "' . TGM_CDN_DOMAIN . '"' );
         add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
         
         $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
       }
     }
+  }
+  else{
+    $type = 'error';
+    $message = __( 'Your "Platform ID" is required!' );
+    add_settings_error('tgm_options_group', 'tgm_option_platform_id', $message, $type);
+    
+    $platform_id = sanitize_key( get_option('tgm_option_platform_id') );
   }
 
   return $platform_id;
@@ -65,16 +80,27 @@ function tgm_is_valid_user_id( string $user_id ) {
 function tgm_is_valid_url( string $url ) {
 
   $is_valid = false;
-  $retry = 2;
+  
+  if ( !empty( $url ) ) {
 
-  for ( $i = 0; $i <= $retry; $i++) { 
+    $retry = 2;
+    for ( $i = 0; $i <= $retry; $i++) { 
 
-    $http_headers = wp_remote_head( $url );
-    if ($http_headers["response"]["code"] === 200) {
-     $is_valid = true; 
-     break;
+      $http_headers = wp_remote_head( $url );
+      if ( empty( $http_headers->errors ) ) {
+        if ($http_headers["response"]["code"] === 200) {
+         $is_valid = true; 
+         break;
+        }
+      }
+      else{
+        $is_valid = 'error'; 
+        break;
+      }
+
     }
   }
+
   return $is_valid;
 }
 
@@ -104,11 +130,17 @@ function tgm_is_valid_tag_location( array $tag_location ) {
  */
 
 function tgm_is_valid_tag_status( array $tag_status ) {
-
+  
   $tag_status_value = array_values( $tag_status )[0];
 
-  if ( !tgm_matches_pattern( TGM_TAG_STATUS_REGEX, $tag_status_value ) ) {
-    $tag_status[ array_key_first( $tag_status ) ] = 'enabled'; // Default
+  if ( empty( $tag_status ) ) {
+    $tag_status = array_map( 'esc_attr', get_option( 'tgm_option_tag_status' ) );
+  }
+  else{
+
+    if ( !tgm_matches_pattern( TGM_TAG_STATUS_REGEX, $tag_status_value ) ) {
+      $tag_status = array_map( 'esc_attr', get_option( 'tgm_option_tag_status' ) );
+    }
   }
 
   return $tag_status;

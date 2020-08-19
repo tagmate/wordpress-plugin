@@ -1,3 +1,4 @@
 wordpress/
-tagmate-plugin/vendor
+vendor/
+svn/
 composer.lock

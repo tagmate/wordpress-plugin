@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Admin Settings
  *
- * Refctoring note: use add_settings_section() and add_settings_field() 
+ * Refctoring note: make use of add_settings_section() and add_settings_field() 
  */
 
 function tgm_add_settings() {
@@ -19,11 +19,11 @@ function tgm_add_settings() {
    add_option( 'tgm_option_user_id' );
    register_setting( 'tgm_options_group', 'tgm_option_user_id', 'tgm_is_valid_user_id' );
 
-   add_option( 'tgm_option_tag_location' );
+   add_option( 'tgm_option_tag_location');
    register_setting( 'tgm_options_group', 'tgm_option_tag_location', 'tgm_is_valid_tag_location' );
 
-   add_option( 'tgm_tag_status' );
-   register_setting( 'tgm_options_group', 'tgm_tag_status', 'tgm_is_valid_tag_status' );
+   add_option( 'tgm_option_tag_status');
+   register_setting( 'tgm_options_group', 'tgm_option_tag_status', 'tgm_is_valid_tag_status' );
 }
 add_action('admin_init', 'tgm_add_settings');
 
@@ -33,7 +33,7 @@ add_action('admin_init', 'tgm_add_settings');
  */
 
 function tgm_add_options_page() {
-   add_options_page('Code Sippet Settings - tagmate.io', 'Tagmate', 'manage_options', 'tm', 'tgm_options_page');
+   add_options_page('Code Sippet Installer by tagmate.io', 'Tagmate', 'manage_options', 'tgm', 'tgm_options_page');
 }
 add_action('admin_menu', 'tgm_add_options_page');
 
@@ -41,7 +41,7 @@ add_action('admin_menu', 'tgm_add_options_page');
 /**
  * Admin Page Content
  *
- * Refactoring note: use do_settings_sections()
+ * Refactoring note: make use of do_settings_sections()
  */
 
 function tgm_options_page()
@@ -61,13 +61,12 @@ function tgm_options_page()
 </style>
 
 <div class="wrap">
-  <img src="<?php echo TGM_PLUGIN_URL ?>/assets/img/tagmate-logo.png" id="brand-logo" alt="tagmate logo" />
+  <img src="<?php echo TGM_PLUGIN_URL ?>/assets/img/tagmate-logo.png" id="brand-logo" alt="tagmate.io logo" />
   <hr>
   <h1 class="title"><?php _e( 'Code Snippet Settings' ) ?></h1>
 
   <form method="post" action="options.php">
     <?php settings_fields( 'tgm_options_group' ); ?>
-    <?php // do_settings_sections(); // add during admin refactoring ?>
 
     <table class="form-table" role="presentation">
     <tbody>
@@ -82,7 +81,7 @@ function tgm_options_page()
       <tr>
         <th scope="row"><label for="tgm_option_user_id"><?php _e( 'User ID' ) ?></label></th>
         <td>
-          <input type="text" id="tgm_option_user_id" name="tgm_option_user_id" value="<?php echo sanitize_key( get_option('tgm_option_user_id') ) ?>" class="regular-text" placeholder="<?php _e( 'Paste your User ID' ) ?>" pattern="<?php echo substr( TGM_USER_ID_REGEX, 1, -1 ) ?>" title="<?php _e( 'numbers, alphabet, hyphen-minus, underscore' ) ?>">
+          <input type="text" id="tgm_option_user_id" name="tgm_option_user_id" value="<?php echo sanitize_key( get_option('tgm_option_user_id') ) ?>" class="regular-text" placeholder="<?php _e( 'Paste your User ID' ) ?>" pattern="<?php echo substr( TGM_USER_ID_REGEX, 1, -1 ) ?>" min="1" title="<?php _e( 'numbers, alphabet, hyphen-minus, underscore' ) ?>">
           <p class="description" id="tagline-description"><?php _e( 'Please copy-paste your "User ID" and <strong>if you were provided one</strong>, otherwise leave it blank.<br> Correct format examples: ') ?> <kbd>kfd2_jm6s-8f31f</kbd>, <kbd>3le3t</kbd>, <kbd>42</kbd>.</p>
         </td>
       </tr>
@@ -108,11 +107,11 @@ function tgm_options_page()
           <fieldset>
             <p>
               <?php 
-                $tag_status_options = get_option( 'tgm_tag_status' );
+                $tag_status_options = get_option( 'tgm_option_tag_status' );
                 $tag_status_options = ( empty( $tag_status_options ) ) ? array( 'option_three' => 'enabled' ) : $tag_status_options;
               ?>
-              <label><input type="radio" name="tgm_tag_status[option_three]" value="enabled"<?php checked( $tag_status_options['option_three'], 'enabled' ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
-              <label><input type="radio" name="tgm_tag_status[option_three]" value="disabled"<?php checked( $tag_status_options['option_three'], 'disabled' ); ?> /> <?php _e( 'Disabled' ) ?></label>
+              <label><input type="radio" name="tgm_option_tag_status[option_three]" value="enabled"<?php checked( $tag_status_options['option_three'], 'enabled' ); ?> /> <?php _e( 'Enabled' ) ?></label><br>
+              <label><input type="radio" name="tgm_option_tag_status[option_three]" value="disabled"<?php checked( $tag_status_options['option_three'], 'disabled' ); ?> /> <?php _e( 'Disabled' ) ?></label>
             </p>
             <p class="description" id="tagline-description"><?php _e( 'Chose if you want to enable or disable your code snippet.') ?></p>
         </fieldset>
