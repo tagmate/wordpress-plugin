@@ -51,4 +51,17 @@ svn ci -m 'Adding first version of my plugin'
 9. Make sure the new version is added by going to [plugin's SVN repo](https://plugins.svn.wordpress.org/tagmate-io-code-snippet-installer/) and checking [the plugin link on WordPress.org](https://wordpress.org/plugins/tagmate-io-code-snippet-installer/)
 10. Good luck! 🤞
 
- 
+ ## License: GPL v2 or later
+
+Copyright Hicham Abdelkaoui (hicham@tagmate.io), inspired by Thomas Geiger's Google Tag Manager for WordPress (https://wordpress.org/plugins/duracelltomi-google-tag-manager)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 2 of the License, or
+(at your option) any later version.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
